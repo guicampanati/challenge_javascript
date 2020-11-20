@@ -1,9 +1,10 @@
-import { createContext } from 'react'
 import { ChakraProvider } from '@chakra-ui/react'
+import AppContext from './AppContext'
+import Content from './components/Content'
 import Layout from './components/Layout'
+import MobileMenu from './components/MobileMenu'
+import NavBar from './components/NavBar'
 import { useFetch } from './hooks/useFetch'
-
-const AppContext = createContext()
 
 function App() {
   const { loading, data, error } = useFetch(
@@ -13,7 +14,11 @@ function App() {
   return (
     <ChakraProvider>
       <AppContext.Provider value={{ loading, data, error }}>
-        <Layout></Layout>
+        <Layout>
+          <MobileMenu />
+          <NavBar />
+          <Content />
+        </Layout>
       </AppContext.Provider>
     </ChakraProvider>
   )

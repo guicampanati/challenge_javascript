@@ -1,11 +1,16 @@
-import React from 'react'
-import { Box } from '@chakra-ui/react'
+import { Flex } from '@chakra-ui/react'
 
 function Layout({ children }) {
   return (
-    <Box mt={8} mx="auto" maxW="800px" w="100%">
+    <Flex
+      h="100vh"
+      bg="#000B3C"
+      direction={{ base: 'column', md: 'row' }}
+      px={{ base: '0.75rem', md: '2rem' }}
+      py="1.25rem"
+    >
       {children}
-    </Box>
+    </Flex>
   )
 }
 
