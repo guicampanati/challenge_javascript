@@ -39,7 +39,8 @@ function Summary() {
         direction="column"
         alignItems="center"
         mt={1}
-        p={2}
+        px={2}
+        py={8}
       >
         <CircularProgress
           color="#A50024"
