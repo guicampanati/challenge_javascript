@@ -1,11 +1,9 @@
 import {
   Badge,
+  Box,
   Button,
-  Flex,
   GridItem,
   Heading,
-  List,
-  ListItem,
   Skeleton,
   Text,
 } from '@chakra-ui/react'
@@ -18,7 +16,7 @@ function Installments() {
 
   if (loading) {
     return (
-      <GridItem colSpan={{ base: 3, md: 2 }}>
+      <GridItem colSpan={3}>
         <Skeleton w="100%" h="300px" />
       </GridItem>
     )
@@ -29,44 +27,82 @@ function Installments() {
   }
 
   return (
-    <GridItem colSpan={{ base: 3, md: 2 }}>
+    <GridItem colSpan={3} position="relative" overflowX="auto">
       <Heading fontSize="xl" px={2}>
         Parcelas
       </Heading>
-      <List bg="gray.50" borderRadius={10} boxShadow="sm" mt={1} spacing={4}>
-        {data.installments.map((inst, index) => (
-          <ListItem
-            key={index}
-            bg="white"
-            borderRadius={10}
-            p={{ base: 2, md: 8 }}
-          >
-            <Flex alignItems="center" justifyContent="space-between">
-              <Flex direction="column" alignItems="center">
+
+      <Box
+        as="table"
+        w="100%"
+        bg="gray.50"
+        borderRadius={10}
+        boxShadow="sm"
+        mt={1}
+        textAlign="center"
+      >
+        <thead>
+          <tr>
+            <th>
+              <Text fontWeight="500" casing="uppercase" py={4}>
+                valor
+              </Text>
+            </th>
+            <th>
+              <Text fontWeight="500" casing="uppercase" py={4}>
+                vencimento
+              </Text>
+            </th>
+            <th>
+              <Text fontWeight="500" casing="uppercase" py={4}>
+                status
+              </Text>
+            </th>
+            <th>
+              <Text fontWeight="500" casing="uppercase" py={4}>
+                ação
+              </Text>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {data.installments.map((inst, index) => (
+            <Box as="tr" key={index}>
+              <Box as="td" py={6}>
+                <Text
+                  fontSize={{ base: 'md', md: 'lg' }}
+                  color="gray.500"
+                  fontWeight="600"
+                >
+                  {currencyFormat(inst.value)}
+                </Text>
+              </Box>
+
+              <Box as="td" py={6}>
+                <Text fontSize="sm" fontWeight="600" color="gray.500" mt={1}>
+                  {inst.dueDate}
+                </Text>
+              </Box>
+
+              <Box as="td" py={6}>
                 {inst.payd ? (
                   <Badge colorScheme="green">PAGO</Badge>
                 ) : (
                   <Badge colorScheme="red">PENDENTE</Badge>
                 )}
-                <Text fontSize="sm" fontWeight="600" color="gray.400" mt={1}>
-                  {inst.dueDate}
-                </Text>
-              </Flex>
+              </Box>
 
-              <Flex alignItems="center">
-                <Text fontSize="xl" fontWeight="600">
-                  {currencyFormat(inst.value)}
-                </Text>
+              <Box as="td" py={6}>
                 {!inst.payd ? (
-                  <Button colorScheme="green" variant="outline" ml={2}>
+                  <Button size="xs" colorScheme="green" variant="outline">
                     Pagar
                   </Button>
                 ) : null}
-              </Flex>
-            </Flex>
-          </ListItem>
-        ))}
-      </List>
+              </Box>
+            </Box>
+          ))}
+        </tbody>
+      </Box>
     </GridItem>
   )
 }
