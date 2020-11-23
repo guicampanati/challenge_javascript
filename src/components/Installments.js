@@ -18,7 +18,7 @@ function Installments() {
 
   if (loading) {
     return (
-      <GridItem colSpan={{ base: 2, xl: 1 }}>
+      <GridItem colSpan={{ base: 3, md: 2 }}>
         <Skeleton w="100%" h="300px" />
       </GridItem>
     )

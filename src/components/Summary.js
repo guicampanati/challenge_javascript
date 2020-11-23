@@ -17,7 +17,7 @@ function Summary() {
 
   if (loading) {
     return (
-      <GridItem colSpan={2}>
+      <GridItem colSpan={{ base: 3, md: 2 }}>
         <Skeleton w="100%" h="300px" />
       </GridItem>
     )
