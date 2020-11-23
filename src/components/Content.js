@@ -1,6 +1,7 @@
 import { Box, Grid } from '@chakra-ui/react'
-import Info from './Info'
+import Interest from './Interest'
 import Installments from './Installments'
+import Summary from './Summary'
 
 function Content() {
   return (
@@ -10,12 +11,9 @@ function Content() {
       p={{ base: '1.25rem', md: '2rem' }}
       borderRadius={{ base: '20px', md: '30px' }}
     >
-      <Grid
-        templateColumns={{ base: 'repeat(1, 1fr)', xl: 'repeat(3, 1fr)' }}
-        gap="1.5rem"
-      >
-        <Info />
-
+      <Grid templateColumns={'repeat(3, minmax(0, 1fr))'} gap="1.5rem">
+        <Summary />
+        <Interest />
         <Installments />
       </Grid>
     </Box>

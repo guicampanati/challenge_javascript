@@ -1,5 +1,6 @@
 import {
   Badge,
+  Button,
   Flex,
   GridItem,
   Heading,
@@ -28,17 +29,17 @@ function Installments() {
   }
 
   return (
-    <GridItem
-      colSpan={{ base: 2, xl: 1 }}
-      bg="gray.50"
-      borderRadius="0.5rem"
-      boxShadow="lg"
-      p="1.5rem"
-    >
+    <GridItem colSpan={{ base: 3, md: 2 }}>
       <Heading fontSize="xl" px="0.5rem">
         Parcelas
       </Heading>
-      <List mt="1rem" spacing="2rem">
+      <List
+        bg="gray.50"
+        borderRadius="0.5rem"
+        boxShadow="sm"
+        mt={1}
+        spacing={4}
+      >
         {data.installments.map((inst, index) => (
           <ListItem key={index} bg="white" borderRadius="10px" p="1rem">
             <Flex alignItems="center" justifyContent="space-between">
@@ -58,9 +59,16 @@ function Installments() {
                 </Text>
               </Flex>
 
-              <Text fontSize="xl" fontWeight="600">
-                {currencyFormat(inst.value)}
-              </Text>
+              <Flex alignItems="center">
+                <Text fontSize="xl" fontWeight="600">
+                  {currencyFormat(inst.value)}
+                </Text>
+                {!inst.payd ? (
+                  <Button colorScheme="green" variant="outline" ml={2}>
+                    Pagar
+                  </Button>
+                ) : null}
+              </Flex>
             </Flex>
           </ListItem>
         ))}
