@@ -30,18 +30,17 @@ function Installments() {
 
   return (
     <GridItem colSpan={{ base: 3, md: 2 }}>
-      <Heading fontSize="xl" px="0.5rem">
+      <Heading fontSize="xl" px={2}>
         Parcelas
       </Heading>
-      <List
-        bg="gray.50"
-        borderRadius="0.5rem"
-        boxShadow="sm"
-        mt={1}
-        spacing={4}
-      >
+      <List bg="gray.50" borderRadius={10} boxShadow="sm" mt={1} spacing={4}>
         {data.installments.map((inst, index) => (
-          <ListItem key={index} bg="white" borderRadius="10px" p="1rem">
+          <ListItem
+            key={index}
+            bg="white"
+            borderRadius={10}
+            p={{ base: 2, md: 8 }}
+          >
             <Flex alignItems="center" justifyContent="space-between">
               <Flex direction="column" alignItems="center">
                 {inst.payd ? (
@@ -49,12 +48,7 @@ function Installments() {
                 ) : (
                   <Badge colorScheme="red">PENDENTE</Badge>
                 )}
-                <Text
-                  fontSize="sm"
-                  fontWeight="600"
-                  color="gray.400"
-                  mt="0.25rem"
-                >
+                <Text fontSize="sm" fontWeight="600" color="gray.400" mt={1}>
                   {inst.dueDate}
                 </Text>
               </Flex>

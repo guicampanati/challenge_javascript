@@ -6,8 +6,8 @@ function Layout({ children }) {
       minH="100vh"
       bg="#000B3C"
       direction={{ base: 'column', md: 'row' }}
-      px={{ base: '0.75rem', md: '2rem' }}
-      py="1.25rem"
+      px={{ base: 3, md: 8 }}
+      py={5}
     >
       {children}
     </Flex>

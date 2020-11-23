@@ -8,10 +8,10 @@ function Content() {
     <Box
       w="100%"
       bg="gray.200"
-      p={{ base: '1.25rem', md: '2rem' }}
-      borderRadius={{ base: '20px', md: '30px' }}
+      p={{ base: 5, md: 8 }}
+      borderRadius={{ base: 20, md: 30 }}
     >
-      <Grid templateColumns={'repeat(3, minmax(0, 1fr))'} gap="1.5rem">
+      <Grid templateColumns={'repeat(3, minmax(0, 1fr))'} gap={6}>
         <Summary />
         <Interest />
         <Installments />

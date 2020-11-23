@@ -31,12 +31,12 @@ function Interest() {
 
   return (
     <GridItem colSpan={{ base: 3, md: 1 }}>
-      <Heading fontSize="xl" px="0.5rem">
+      <Heading fontSize="xl" px={2}>
         Juros
       </Heading>
       <Flex
         bg="gray.50"
-        borderRadius="0.5rem"
+        borderRadius={10}
         boxShadow="sm"
         direction="column"
         alignItems="center"

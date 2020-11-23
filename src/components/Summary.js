@@ -29,12 +29,12 @@ function Summary() {
 
   return (
     <GridItem colSpan={{ base: 3, md: 2 }}>
-      <Heading fontSize="xl" px="0.5rem">
+      <Heading fontSize="xl" px={2}>
         Resumo
       </Heading>
       <Flex
         bg="gray.50"
-        borderRadius="0.5rem"
+        borderRadius={10}
         boxShadow="sm"
         direction="column"
         alignItems="center"
