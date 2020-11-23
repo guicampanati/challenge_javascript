@@ -7,13 +7,11 @@ import NavBar from './components/NavBar'
 import { useFetch } from './hooks/useFetch'
 
 function App() {
-  const { loading, data, error } = useFetch(
-    'http://www.mocky.io/v2/5c923b0932000029056bce39'
-  )
+  const state = useFetch('http://www.mocky.io/v2/5c923b0932000029056bce39')
 
   return (
     <ChakraProvider>
-      <AppContext.Provider value={{ loading, data, error }}>
+      <AppContext.Provider value={state}>
         <Layout>
           <MobileMenu />
           <NavBar />
