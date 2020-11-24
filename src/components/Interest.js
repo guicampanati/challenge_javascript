@@ -33,7 +33,10 @@ function Interest() {
   }
 
   const { totalAmountInTaxes, monthlyInterest } = data
-  if (totalAmountInTaxes === 'undefined' || monthlyInterest === 'undefined') {
+  if (
+    typeof totalAmountInTaxes === 'undefined' ||
+    typeof monthlyInterest === 'undefined'
+  ) {
     return (
       <Alert status="error">
         <AlertIcon />

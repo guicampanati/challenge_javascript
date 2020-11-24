@@ -30,7 +30,7 @@ function Installments() {
   }
 
   const { installments } = data
-  if (installments === 'undefined') {
+  if (typeof installments === 'undefined') {
     return (
       <Alert status="error">
         <AlertIcon />

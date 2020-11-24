@@ -31,7 +31,7 @@ function Summary() {
   }
 
   const { amountPayd, amountTaken } = data
-  if (amountPayd === 'undefined' || amountTaken === 'undefined') {
+  if (typeof amountPayd === 'undefined' || typeof amountTaken === 'undefined') {
     return (
       <Alert status="error">
         <AlertIcon />
