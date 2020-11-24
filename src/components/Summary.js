@@ -1,4 +1,7 @@
 import {
+  Alert,
+  AlertDescription,
+  AlertIcon,
   CircularProgress,
   CircularProgressLabel,
   Flex,
@@ -27,6 +30,16 @@ function Summary() {
     return <div>{error}</div>
   }
 
+  const { amountPayd, amountTaken } = data
+  if (amountPayd === 'undefined' || amountTaken === 'undefined') {
+    return (
+      <Alert status="error">
+        <AlertIcon />
+        <AlertDescription>Erro ao carregar dados</AlertDescription>
+      </Alert>
+    )
+  }
+
   return (
     <GridItem colSpan={{ base: 3, md: 2 }}>
       <Heading fontSize="xl" px={2}>
@@ -45,12 +58,12 @@ function Summary() {
         <CircularProgress
           color="#A50024"
           capIsRound
-          value={percentage(data.amountPayd, data.amountTaken)}
+          value={percentage(amountPayd, amountTaken)}
           size="120px"
           mb={4}
         >
           <CircularProgressLabel>
-            {percentage(data.amountPayd, data.amountTaken)}%
+            {percentage(amountPayd, amountTaken)}%
           </CircularProgressLabel>
         </CircularProgress>
 
@@ -62,7 +75,7 @@ function Summary() {
         >
           <Flex alignItems="baseline">
             <Text fontSize="2xl" fontWeight="700">
-              {currencyFormat(data.amountPayd)}
+              {currencyFormat(amountPayd)}
             </Text>
             <Text fontSize="sm" fontWeight="600" color="gray.400" ml={1} mr={2}>
               Pago
@@ -71,7 +84,7 @@ function Summary() {
 
           <Flex alignItems="baseline">
             <Text fontSize="2xl" fontWeight="700">
-              {currencyFormat(data.amountTaken)}
+              {currencyFormat(amountTaken)}
             </Text>
             <Text fontSize="sm" fontWeight="600" color="gray.400" ml={1}>
               Emprestado

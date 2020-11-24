@@ -1,4 +1,7 @@
 import {
+  Alert,
+  AlertDescription,
+  AlertIcon,
   Badge,
   Box,
   Button,
@@ -24,6 +27,16 @@ function Installments() {
 
   if (error) {
     return <div>{error}</div>
+  }
+
+  const { installments } = data
+  if (installments === 'undefined') {
+    return (
+      <Alert status="error">
+        <AlertIcon />
+        <AlertDescription>Erro ao carregar dados</AlertDescription>
+      </Alert>
+    )
   }
 
   return (
@@ -66,7 +79,7 @@ function Installments() {
           </tr>
         </thead>
         <tbody>
-          {data.installments.map((inst, index) => (
+          {installments.map((inst, index) => (
             <Box as="tr" key={index}>
               <Box as="td" py={6}>
                 <Text

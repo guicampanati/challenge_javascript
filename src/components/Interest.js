@@ -1,4 +1,7 @@
 import {
+  Alert,
+  AlertDescription,
+  AlertIcon,
   Flex,
   GridItem,
   Heading,
@@ -29,6 +32,16 @@ function Interest() {
     return <div>{error}</div>
   }
 
+  const { totalAmountInTaxes, monthlyInterest } = data
+  if (totalAmountInTaxes === 'undefined' || monthlyInterest === 'undefined') {
+    return (
+      <Alert status="error">
+        <AlertIcon />
+        <AlertDescription>Erro ao carregar dados</AlertDescription>
+      </Alert>
+    )
+  }
+
   return (
     <GridItem colSpan={{ base: 3, md: 1 }}>
       <Heading fontSize="xl" px={2}>
@@ -49,10 +62,10 @@ function Interest() {
             <StatLabel color="gray.400">
               Valor Total de Juros do Empréstimo
             </StatLabel>
-            <StatNumber>{currencyFormat(data.totalAmountInTaxes)}</StatNumber>
+            <StatNumber>{currencyFormat(totalAmountInTaxes)}</StatNumber>
             <StatHelpText>
               <StatArrow type="increase" />
-              {data.monthlyInterest}%
+              {monthlyInterest}%
             </StatHelpText>
           </Stat>
         </StatGroup>
